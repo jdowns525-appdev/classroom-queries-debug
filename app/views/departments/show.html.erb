@@ -25,7 +25,7 @@
         Number of courses
       </dt>
       <dd>
-        <%= course = Course.where({ :id => @the_course }) %>
+        <%= course = Enrollment.where({ :id => @the_course }).count %>
       
       </dd>
 
@@ -36,12 +36,12 @@
 <hr>
 
 <h2>Courses</h2>
-<% course = Course.where({ :id => @the_department.name }).each do |p| %>
 <ul>
-  <%  @the_department.each do |a_course| %>
+<% Course.where({ :id => @the_department.id }).each do |course| %>
+  <%  @the_enrollment.id %>
     <li>
       <a href="/courses/<%= course.name %>"><%= course.count %></a>
     </li>
- <%end%>
+ 
 <ul>
 <%end%>
