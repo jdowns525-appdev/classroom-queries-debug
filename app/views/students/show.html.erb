@@ -17,14 +17,14 @@
         First name
       </dt>
       <dd>
-        <% @the_student.first_name %>
+        <%= @the_student.first_name %>
       </dd>
 
       <dt>
         Last name
       </dt>
       <dd>
-        <% @the_student.last_name %>
+        <%= @the_student.last_name %>
       </dd>
 
       <dt>
@@ -38,7 +38,7 @@
         Number of courses
       </dt>
       <dd>
-        <%= Enrollment.where({ :id => @the_student }).count %>
+        <%= Student.where({ :id => @the_student.id }).count %>
       </dd>
     </dl>
   </div>
@@ -49,12 +49,12 @@
 
 <h3>Course Load</h3>
 <ul>
-  <% Enrollment.where({:student_id => @the_student.id }) %>
-  <% enrollments.each do |enrollment| %>
+  <% Course.where({:id => @the_course }).each do |course| %>
+
     <li>
-      <% course = Course.where({ :id => enrollment.course_id }).at(0) %>
+      <% the_course = Enrollment.where({ :student_id => @enrollment.id }).count %>
       <a href="/courses/<%= course.id %>">
-        <%= course.title %>
+        <%= @course.title %>
       </a>
     </li>
   <% end %>
